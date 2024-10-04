@@ -1,0 +1,21 @@
+services:
+  33routes-postgres:
+    image: postgres:14-alpine
+
+  33routes-user-service:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_USER: auth_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: auth_db
+    volumes:
+      - auth-db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  auth-db-data:

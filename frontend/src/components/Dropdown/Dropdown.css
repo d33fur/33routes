@@ -1,0 +1,38 @@
+.dropdown {
+  position: relative; /* Позиционирование для абсолютного меню */
+  display: inline-block; /* Чтобы кнопка занимала минимальное пространство */
+}
+
+.dropdown-toggle {
+  padding: 10px 20px; /* Отступы */
+  background-color: #007bff; /* Синий фон */
+  color: white; /* Белый текст */
+  border: none; /* Без рамки */
+  border-radius: 4px; /* Закругленные углы */
+  cursor: pointer; /* Указатель курсора при наведении */
+  transition: background 0.3s; /* Плавный переход для фона */
+}
+
+.dropdown-toggle:hover {
+  background-color: #0056b3; /* Темно-синий фон при наведении */
+}
+
+.dropdown-menu {
+  position: absolute; /* Абсолютное позиционирование */
+  background-color: white; /* Белый фон */
+  border: 1px solid #ccc; /* Светло-серая рамка */
+  border-radius: 4px; /* Закругленные углы */
+  margin-top: 5px; /* Отступ сверху */
+  z-index: 1000; /* Чтобы меню было поверх других элементов */
+  list-style: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем отступы */
+}
+
+.dropdown-item {
+  padding: 10px 20px; /* Отступы */
+  cursor: pointer; /* Указатель курсора при наведении */
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1; /* Цвет фона при наведении */
+}

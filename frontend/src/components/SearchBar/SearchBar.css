@@ -1,0 +1,32 @@
+.search-bar {
+  display: flex; /* Выравниваем элементы в одну линию */
+  margin: 20px 0; /* Отступы сверху и снизу */
+}
+
+.search-input {
+  flex: 1; /* Занимает все доступное пространство */
+  padding: 10px; /* Отступы внутри поля ввода */
+  border: 2px solid #007bff; /* Синий контур */
+  border-radius: 4px; /* Закругленные углы */
+  font-size: 16px; /* Размер шрифта */
+  transition: border-color 0.3s; /* Плавный переход для цвета рамки */
+}
+
+.search-input:focus {
+  outline: none; /* Убираем стандартное выделение при фокусе */
+  border-color: #0056b3; /* Цвет рамки при фокусе */
+}
+
+.search-button {
+  padding: 10px 20px; /* Отступы внутри кнопки */
+  background-color: #007bff; /* Синий фон */
+  color: white; /* Белый текст */
+  border: none; /* Без рамки */
+  border-radius: 4px; /* Закругленные углы */
+  cursor: pointer; /* Указатель курсора при наведении */
+  margin-left: 10px; /* Отступ слева */
+}
+
+.search-button:hover {
+  background-color: #0056b3; /* Темно-синий фон при наведении */
+}

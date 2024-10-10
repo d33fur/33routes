@@ -1,0 +1,29 @@
+/* Кнопка без фона с подсветкой при наведении */
+.outlined-button {
+  background: transparent; /* Без фона */
+  border: none; /*Синий контур
+  color: #007bff; /* Текст синий */
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.5s, color 0.5s; /* Плавный переход */
+}
+
+.outlined-button:hover {
+  background: #007bff; /* Синий фон при наведении */
+  color: white; /* Белый текст при наведении */
+}
+
+/* Кнопка с фоном, меняет цвет при наведении */
+
+.filled-button {
+  background: #007bff; /* Синий фон */
+  color: white; /* Белый текст */
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none; /* Без границы */
+  transition: background 0.3s; /* Плавный переход */
+}
+
+.filled-button:hover {
+  background: #0056b3; /* Темно-синий фон при наведении */
+}

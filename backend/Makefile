@@ -28,12 +28,12 @@ logs:
 
 .PHONY: pg-cli
 pg-cli:
-	@docker exec -it 33routes_postgres psql -U admin -d 33routes
+	@docker exec -it 33routes-postgres psql -U postgres -d 33routes
 
 .PHONY: rm-pg-data
 rm-pg-data:
-	@rm -rf backend/databasepostgres/data && \
-	mkdir backend/databasepostgres/data
+	@rm -rf database/postgres/data && \
+	mkdir database/postgres/data
 
 .PHONY: clear-all
 clear-all: clear rm-pg-data

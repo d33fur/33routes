@@ -1,9 +1,6 @@
 data-example
 wait
 .env
-api-gateway
-auth-service
 collection-service
 file-storage-service
-route-service
-user-service
+api-gateway

@@ -1,21 +1,61 @@
+version: '3.8'
+
 services:
   33routes-postgres:
-    image: postgres:14-alpine
-
-  33routes-user-service:
-    image: postgres:14-alpine
-    environment:
-      POSTGRES_USER: auth_user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: auth_db
+    container_name: 33routes-postgres
+    image: postgres:17-alpine
+    env_file: 
+      - .env
     volumes:
-      - auth-db-data:/var/lib/postgresql/data
+      - ./database/postgres/init:/docker-entrypoint-initdb.d
+      - ./database/postgres/data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "5432:5432"
     networks:
-      - app-network
+      - user-network
+        
+  33routes-redis:
+    container_name: 33routes-redis
+    image: redis:7-alpine
+    volumes:
+      - ./database/redis/data:/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "6379:6379"
+    networks:
+      - user-network
+
+  # 33routes-auth-service:
+  #   container_name: 33routes-auth-service
+  #   build:
+  #     context: ./auth-service
+  #     dockerfile: Dockerfile
+  #   env_file: 
+  #     - .env
+  #   depends_on:
+  #     33routes-postgres:
+  #       condition: service_healthy
+  #     33routes-redis:
+  #       condition: service_healthy
+  #   ports:
+  #     - "8001:8001"
+  #   restart: always
+  #   networks:
+  #     - user-network
 
 networks:
-  app-network:
+  user-network:
     driver: bridge
-
-volumes:
-  auth-db-data:
+  # admin-network:
+  #   driver: bridge

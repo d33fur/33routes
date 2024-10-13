@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+include .env
+
 .PHONY: all
 all: rebuild start
 
@@ -15,12 +17,12 @@ rebuild:
 start:
 	@docker-compose up -d
 
-.PHONY: stop
-stop:
-	@docker-compose stop
+.PHONY: down
+down:
+	@docker-compose down
 
 .PHONY: restart
-restart: stop start
+restart: down start
 
 .PHONY: logs
 logs:
@@ -28,7 +30,11 @@ logs:
 
 .PHONY: pg-cli
 pg-cli:
-	@docker exec -it 33routes-postgres psql -U postgres -d 33routes
+	@docker exec -it $(POSTGRES_CONTAINER_NAME) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)
+
+.PHONY: pg-seed-data
+pg-seed-data:
+	@docker exec -i $(POSTGRES_CONTAINER_NAME) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB) < ./database/postgres/test_data/seed_data.sql
 
 .PHONY: rm-pg-data
 rm-pg-data:

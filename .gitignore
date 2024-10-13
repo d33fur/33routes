@@ -1,7 +1,6 @@
-data-example
+data_example
 wait
 .env
-collection-service
-file-storage-service
-api-gateway
+collection_service
+file_storage_service
 devops

@@ -1,7 +1,9 @@
+// App.js
 import React from 'react';
-import SearchBar from './components/SearchBar/SearchBar';
+import SearchBar from './components/Search_bar/Search_bar';
 import Dropdown from './components/Dropdown/Dropdown';
 import ButtonGroup from './components/Button/Button';
+import ToggleSwitch from './components/Toggle_switch/Toggle_switch';
 
 const App = () => {
   const options = [
@@ -26,6 +28,10 @@ const App = () => {
     alert('Заполненная кнопка нажата!');
   };
 
+  const handleToggle = (isOn) => {
+    console.log(`Переключатель: ${isOn ? 'Включен' : 'Выключен'}`);
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <h1>Мое приложение</h1>
@@ -41,6 +47,9 @@ const App = () => {
         onOutlinedClick={handleOutlinedButtonClick} 
         onFilledClick={handleFilledButtonClick} 
       />
+
+      {/* Переключатель */}
+      <ToggleSwitch onToggle={handleToggle} />
 
       {/* Другие элементы вашего приложения могут быть добавлены здесь */}
     </div>

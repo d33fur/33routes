@@ -1,0 +1,70 @@
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  display: inline-block;
+  text-align: left;
+}
+
+.toggle-switch-checkbox {
+  display: none;
+}
+
+.toggle-switch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+}
+
+.toggle-switch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+  background-color: #ccc;
+}
+
+.toggle-switch-inner:before {
+  content: "Off";
+  float: left;
+  width: 50%;
+  height: 100%;
+  background-color: #ccc;
+  color: white;
+  text-align: center;
+  line-height: 26px;
+}
+
+.toggle-switch-inner:after {
+  content: "On";
+  float: right;
+  width: 50%;
+  height: 100%;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 26px;
+}
+
+.toggle-switch-switch {
+  display: block;
+  width: 18px;
+  margin: 4px;
+  background: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 38px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  transition: all 0.3s ease-in 0s;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+  margin-left: 0;
+}
+
+.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+  right: 0px;
+}
